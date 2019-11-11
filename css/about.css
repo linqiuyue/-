@@ -1,5 +1,6 @@
 main {
   width: 1200px;
+  height: calc(100% - 112px);
   margin: 0px auto;
   display: flex;
   flex-direction: column;
@@ -9,11 +10,19 @@ main {
   color: rgb(71, 71, 71);
   width: 500px;
 }
+.content-text p {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+.intro {
+  text-indent: 2em;
+}
 .content {
   display: flex;
 }
 
-.content img {
-  margin-right: 10px;
+#map {
   width: 500px;
+  height: 300px;
+  margin-right: 10px;
 }
