@@ -1,0 +1,27 @@
+main {
+  width: 100%;
+  margin: 0px auto;
+}
+.title-box {
+  background: #f2f2f2;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 0px;
+}
+.title-content {
+  width: 1200px;
+  margin: 0px auto;
+}
+#title {
+  font-size: 24px;
+  font-weight: 700;
+}
+#time {
+  color: #666;
+  font-size: 14px;
+  font-weight: 400;
+}
+.content {
+  width: 1200px;
+  margin: 0px auto;
+  margin-top: 20px;
+}

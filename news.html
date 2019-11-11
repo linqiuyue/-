@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/public.css" rel="stylesheet" type="text/css" />
+    <link href="css/news.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          logo
+        </div>
+        <div class="nav-right">
+          <ul>
+            <li>
+              <a href="index.html"> 首页</a>
+            </li>
+            <li>
+              <a href="news.html">新闻</a>
+            </li>
+            <li>
+              <a href="about.html">关于</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <h2>最近动态</h2>
+      <ul class="content" id="news"></ul>
+    </main>
+    <div class="page">
+      <a href="news.html">1</a>
+      <a href="news.html?page=2">2</a>
+    </div>
+    <footer></footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var query = window.location.search.substring(1);
+      var pair = query.split("=");
+      axios
+        .get(
+          pair[1]
+            ? `http://mock-api.com/jzAqqZzk.mock/news?page=${pair[1]}`
+            : "http://mock-api.com/jzAqqZzk.mock/news"
+        )
+        .then(function(response) {
+          const data = response.data.data;
+
+          for (var i = 0; i < data.length; i++) {
+            document.getElementById("news").innerHTML = /* HTML */ `
+              ${document.getElementById("news").innerHTML}
+              <li>
+                <a href="details.html?id=${data[i].id}">
+                  <img src="${data[i].cover}" />
+                  <div class="item-content">
+                    <h3>${data[i].title}</h3>
+                    <p>${data[i].intro}</p>
+                  </div>
+                </a>
+              </li>
+            `;
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

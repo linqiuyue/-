@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link
+      href="https://typo.sofi.sh/typo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/public.css" rel="stylesheet" type="text/css" />
+    <link href="css/details.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          logo
+        </div>
+        <div class="nav-right">
+          <ul>
+            <li>
+              <a href="index.html"> 首页</a>
+            </li>
+            <li>
+              <a href="news.html">新闻</a>
+            </li>
+            <li>
+              <a href="about.html">关于</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="title-box">
+        <div class="title-content">
+          <h2 id="title"></h2>
+          <p id="time"></p>
+        </div>
+      </div>
+
+      <p class="typo content" id="content"></p>
+    </main>
+    <footer></footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      axios
+        .get("http://mock-api.com/jzAqqZzk.mock/news/1598830")
+        .then(function(response) {
+          const data = response.data;
+          console.log(data, data.title);
+          document.getElementById("title").innerHTML = data.title;
+          document.getElementById("time").innerHTML = data.time;
+          document.getElementById("content").innerHTML = data.content;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

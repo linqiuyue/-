@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/public.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          logo
+        </div>
+        <div class="nav-right">
+          <ul>
+            <li>
+              <a href="index.html"> 首页</a>
+            </li>
+            <li>
+              <a href="news.html">新闻</a>
+            </li>
+            <li>
+              <a href="about.html">关于</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="banner">
+        <img src="img/banner.jpg" />
+      </div>
+      <div class="content">
+        <h2>热门产品</h2>
+        <ul class="product-content" id="hotMovies">
+          <li>
+            <img src="img/movies.jpg" />
+          </li>
+          <li>
+            <img src="img/movies.jpg" />
+          </li>
+          <li>
+            <img src="img/movies.jpg" />
+          </li>
+          <li>
+            <img src="img/movies.jpg" />
+          </li>
+          <li>
+            <img src="img/movies.jpg" />
+          </li>
+        </ul>
+        <h2>新闻中心</h2>
+        <ul class="new-content" id="news"></ul>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      axios
+        .get("http://mock-api.com/jzAqqZzk.mock/news")
+        .then(function(response) {
+          const data = response.data.data;
+
+          for (var i = 0; i < 4; i++) {
+            document.getElementById("news").innerHTML = /* HTML */ `
+              ${document.getElementById("news").innerHTML}
+              <li>
+                <img src="${data[i].cover}" />
+                <p>${data[i].title}</p>
+                <span>${data[i].intro}</span>
+              </li>
+            `;
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
